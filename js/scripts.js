@@ -66,7 +66,7 @@ $('a[data-update-mutants = "true"]').on('click',updateMutant);
 
 
   function updateMutant(e) {
-    debugger;
+    
     e.preventDefault();
     var name = $('#real_name').val();
     var power = $('#mutant_power').val();
