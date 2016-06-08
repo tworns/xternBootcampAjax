@@ -74,6 +74,7 @@ function searchId(id) {
 function deletedMutant(data) {
   $('#people').empty();
   $('#idNum').val("");
+  loadResults(data);
   loadMutants(data);
 }
 function addedMutant(data) {
@@ -81,6 +82,7 @@ function addedMutant(data) {
   $('#realName').val("");
   $('#mutantName').val("");
   $('#mutantPower').val("");
+  loadResults(data);
   loadMutants(data);
 }
 
