@@ -33,17 +33,20 @@
              data-remote-pokemon="true">My Pokemons. Let me show you them.</a>
         </li>
         <li>
+          <a id = "clear" data-clear = true> Clear</a>
+        </li>
+        <li>
           <form id = 'mutantAdd' class = "list-group-item">
               <input id = "realName" type = "text" class = 'small-12 medium-12 large-12 columns' placeholder = "Real Name" required>
               <input id = "mutantName" type = "text"  class = 'small-12 medium-12 large-12 columns' placeholder="Alias"required>
-              <input id = "mutantPower" text= "text" class = 'small-12 medium-12 large-12 columns' placeholder = "Power" required>
-              <a href = "https://mutant-school.herokuapp.com/api/v1/mutants" class = "button success inline small-12 columns" data-add-mutants = true>Add Mutant</a>
+              <input id = "mutantPower" type= "text" class = 'small-12 medium-12 large-12 columns' placeholder = "Power" required>
+              <a href = "https://mutant-school.herokuapp.com/api/v1/mutants" class = "button success inline small-12 columns" data-add-mutants = "true">Add Mutant</a>
           </form>
         </li>
         <li>
           <form id = 'mutantDelete' class = "list-group-item">
-            <input id = "idNum" type = "text" class = 'small-12 medium-12 large-12 columns' placeholder "ID" required>
-            <a href = "https://mutant-school.herokuapp.com/api/v1/mutants" class = "button alert small-12 columns">Delete Mutant</a>  
+            <input id = "idNum" type = "text" class = 'small-12 medium-12 large-12 columns' placeholder ="Mutant ID" required data-remove-mutants = "true">
+            <a href = "https://mutant-school.herokuapp.com/api/v1/mutants" class = "button alert small-12 columns" data-delete-mutants = "true" >Delete Mutant</a>
           </form>
         </li>
       </ul>

@@ -44,16 +44,44 @@ $('a[data-add-mutants = "true"]').on('click',function(e) {
       mutant_name: $('#mutantName').val(),
       power: $('#mutantPower').val(),
     }),
-    success: addedMutant(),
+    success: addedMutant,
       });
 });
+$('a[data-delete-mutants = "true"]').on('click',function(e){
+  e.preventDefault();
+  var id = $('#idNum').val();
+  var delString = $(this).attr('href') + "/" + id;
+  if(searchId(id) === true){
+     delString = delString+id;
+    console.log(delString+=id);
+  }
+  $.ajax({
+    url: delString,
+    method: 'delete',
+    success : deletedMutant,
+  });
+});
 
-function addedMutant() {
-  $('.people').empty();
+function searchId(id) {
+  for(var i = 0; i < people.length; i++) {
+    if(people[i].id === id) {
+       people.splice(i,1);
+       return true;
+    }
+  }
+  return false;
+}
+function deletedMutant(data) {
+  $('#people').empty();
+  $('#idNum').val("");
+  loadMutants(data);
+}
+function addedMutant(data) {
+  $('#people').empty();
   $('#realName').val("");
   $('#mutantName').val("");
   $('#mutantPower').val("");
-  loadMutants();
+  loadMutants(data);
 }
 
 function loadResults(data) {
@@ -65,7 +93,14 @@ function loadResults(data) {
   }
   listPeople();
 }
-
+$('a[data-clear = "true"]').on('click', function(e) {
+  e.preventDefault();
+  $('#people').empty();
+  $('#realName').val("");
+  $('#mutantName').val("");
+  $('#mutantPower').val("");
+  $('#idNum').val("");
+});
 function loadMutants(data) {
   $.each(data, function(i, mutant) {
     people.push({
