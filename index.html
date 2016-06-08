@@ -44,6 +44,14 @@
           </form>
         </li>
         <li>
+          <form id = 'mutantUpdate' class = "list-group-item">
+              <input id = "mutant_id" type = "text" class = 'small-12 medium-12 large-12 columns' placeholder = "Mutant ID" required>
+              <input id = "real_name" type = "text" class = 'small-12 medium-12 large-12 columns' placeholder = "Real Name">
+              <input id = "mutant_name" type = "text"  class = 'small-12 medium-12 large-12 columns' placeholder="Alias">
+              <input id = "mutant_power" type= "text" class = 'small-12 medium-12 large-12 columns' placeholder = "Power">
+              <a href = "https://mutant-school.herokuapp.com/api/v1/mutants" class = "button success inline small-12 columns" data-update-mutants = "true">Update Mutant</a>
+          </form>
+        <li>
           <form id = 'mutantDelete' class = "list-group-item">
             <input id = "idNum" type = "text" class = 'small-12 medium-12 large-12 columns' placeholder ="Mutant ID" required>
             <a href = "https://mutant-school.herokuapp.com/api/v1/mutants" class = "button alert small-12 columns" data-delete-mutants = "true" >Delete Mutant</a>

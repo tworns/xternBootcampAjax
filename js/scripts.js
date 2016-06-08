@@ -62,6 +62,40 @@ $('a[data-delete-mutants = "true"]').on('click',function(e){
   });
 });
 
+$('a[data-update-mutants = "true"]').on('click',updateMutant);
+
+
+  function updateMutant(e) {
+    debugger;
+    e.preventDefault();
+    var name = $('#real_name').val();
+    var power = $('#mutant_power').val();
+    var mName = $('#mutant_name').val();
+    if(name === undefined || name === "") {
+      name = "Placeholder";
+    }
+    if(power === undefined|| power === "") {
+      power = "none";
+    }
+    if(mName === undefined|| mName === "") {
+      mName = "Bob";
+    }
+    $.ajax({
+      url : $(this).attr('href') + '/'+ $('#mutant_id').val(),
+      method : 'put',
+      success: clear(e),
+      data : {
+        mutant: {
+          real_name : name,
+          power : power,
+          mutant_name :  mName,
+        },
+      },
+
+    });
+
+}
+
 function searchId(id) {
   for(var i = 0; i < people.length; i++) {
     if(people[i].id === id) {
@@ -95,14 +129,16 @@ function loadResults(data) {
   }
   listPeople();
 }
-$('a[data-clear = "true"]').on('click', function(e) {
+
+$('a[data-clear = "true"]').on('click', clear);
+ function clear (e) {
   e.preventDefault();
   $('#people').empty();
   $('#realName').val("");
   $('#mutantName').val("");
   $('#mutantPower').val("");
   $('#idNum').val("");
-});
+}
 function loadMutants(data) {
   $.each(data, function(i, mutant) {
     people.push({
