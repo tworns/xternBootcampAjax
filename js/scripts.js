@@ -62,11 +62,19 @@ $('a[data-delete-mutants = "true"]').on('click',function(e){
   });
 });
 
+$('a[data-clear = "true"]').on('click', clear);
+ function clear (e) {
+  e.preventDefault();
+  $('#people').empty();
+  $('#realName').val("");
+  $('#mutantName').val("");
+  $('#mutantPower').val("");
+  $('#idNum').val("");
+}
+
 $('a[data-update-mutants = "true"]').on('click',updateMutant);
 
-
   function updateMutant(e) {
-    
     e.preventDefault();
     var name = $('#real_name').val();
     var power = $('#mutant_power').val();
@@ -93,7 +101,6 @@ $('a[data-update-mutants = "true"]').on('click',updateMutant);
       },
 
     });
-
 }
 
 function searchId(id) {
@@ -108,16 +115,12 @@ function searchId(id) {
 function deletedMutant(data) {
   $('#people').empty();
   $('#idNum').val("");
-  loadResults(data);
-  loadMutants(data);
 }
 function addedMutant(data) {
   $('#people').empty();
   $('#realName').val("");
   $('#mutantName').val("");
   $('#mutantPower').val("");
-  loadResults(data);
-  loadMutants(data);
 }
 
 function loadResults(data) {
@@ -130,15 +133,6 @@ function loadResults(data) {
   listPeople();
 }
 
-$('a[data-clear = "true"]').on('click', clear);
- function clear (e) {
-  e.preventDefault();
-  $('#people').empty();
-  $('#realName').val("");
-  $('#mutantName').val("");
-  $('#mutantPower').val("");
-  $('#idNum').val("");
-}
 function loadMutants(data) {
   $.each(data, function(i, mutant) {
     people.push({
@@ -185,7 +179,6 @@ function listPeople() {
 
   $('#people').slideDown();
 }
-
 
 
 listPeople();
