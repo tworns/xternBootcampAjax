@@ -113,10 +113,12 @@ function searchId(id) {
   return false;
 }
 function deletedMutant(data) {
+  $('#people').slideUp();
   $('#people').empty();
   $('#idNum').val("");
 }
 function addedMutant(data) {
+  $('#people').slideUp();
   $('#people').empty();
   $('#realName').val("");
   $('#mutantName').val("");
@@ -179,6 +181,5 @@ function listPeople() {
 
   $('#people').slideDown();
 }
-
 
 listPeople();
